@@ -1,7 +1,4 @@
-import os
-import sys
 import openai
-sys.path.append("/home/catalin/Desktop/CHAT_BOT/my-gpt3-sandbox/")
 
 #from api import GPT
 
