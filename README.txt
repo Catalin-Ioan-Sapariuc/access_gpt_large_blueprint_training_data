@@ -12,4 +12,8 @@ query to GPT3 to obtain a completion.
 NOTE: This code can be improved / extended in (at least) 3 directions: 
 
 1. Improve the training (.csv) database for the particular knowledge desired / tasks. 
-2. Possibly find other ways (less expensive) for creating embeddings (openai charges 
+2. Possibly find other ways (less expensive) for creating embeddings (openai charges for each created embedding, the charge is 0.2$ for 1K embedded token, as the most expensive charge, ada is much cheaper but I found small (accuracy, possibly floating point approximation) errors with ada's embeddings.
+3. Calculate the token values for prompts, completions and query so that we know exactly how many tokens our curated (top n prompts + top n completions + query) represent. Currently we take n=5 and give a warning if above the length of the total prompt is >10000 (which corresponds approximately to total tokens > 2500) but this can be made more precise. 
+
+
+
