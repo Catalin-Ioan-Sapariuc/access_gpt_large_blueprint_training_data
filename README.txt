@@ -9,3 +9,7 @@ This training database is stored in a pickle .pkl file (which has the advantage 
 and create a "training prompt" for GPT3 formed from these top (n=5) similar prompts and the query. Then pass this curated
 query to GPT3 to obtain a completion. 
 
+NOTE: This code can be improved / extended in (at least) 3 directions: 
+
+1. Improve the training (.csv) database for the particular knowledge desired / tasks. 
+2. Possibly find other ways (less expensive) for creating embeddings (openai charges 
