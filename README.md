@@ -9,12 +9,12 @@ b) for a particular user's query, find top (n=5) similar prompts to that query (
 and create a "training prompt" for GPT3 formed from these top (n=5) similar prompts and the query. Then pass this curated
 query to GPT3 to obtain a completion.  
 
-The main working files are: 
+The main working files are:   
 1. embed_examples_with_tokens.py (for embedding the prompts in the base .xlsx training file)
-and for calculating the (prompt, completion) tokens 
+and for calculating the (prompt, completion) tokens  
 2. access_gpt3_for_large_few_shots_base.py for accepting a query, creating the prompt to be fed to the engine 
 (by pre-pending the query with top 5 most similar prompts (and their completions)), feeding the created prompt
-to the GPT3 engine and outputing the engine's completion.  
+to the GPT3 engine and outputing the engine's completion.    
 
 NOTE: This code can be improved / extended in one - two directions:  
 
