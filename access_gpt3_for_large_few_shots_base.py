@@ -36,9 +36,12 @@ df = pd.read_pickle('blueprint-primer-general-and-specific-embeddings-with-token
 #print(type(df['prompt_embedding'][0]))
 
 #query = "What is blueprint?"
-query = '''Using the blueprint tools, write steps to create an e-shopping ai, 
-with collections of users,
-products, shopping events and users balance, and with relations between these.'''
+#query = '''Using the blueprint tools, write steps to create an e-shopping api, 
+#with collections of users,
+#products, shopping events and users balance, and with relations between these.'''
+query = ''' Using the blueprint tools, write steps to create a to do list api, 
+with users, todos, tasks, timestamp events, and with relations between these.'''
+
 
 query_embed = text_embed(query)
 
