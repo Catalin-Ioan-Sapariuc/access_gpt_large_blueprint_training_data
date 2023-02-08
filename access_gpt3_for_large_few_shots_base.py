@@ -20,7 +20,7 @@ engine='text-davinci-003'
 temperature=0.
 top_p=1.
 presence_penalty=0.
-max_tokens=600
+max_tokens=1000
 
 def text_embed(text:str) -> str:
     response = openai.Embedding.create(input=text,engine=embedding_engine)
@@ -39,9 +39,10 @@ df = pd.read_pickle('blueprint-primer-general-and-specific-embeddings-with-token
 #query = '''Using the blueprint tools, write steps to create an e-shopping api, 
 #with collections of users,
 #products, shopping events and users balance, and with relations between these.'''
-query = ''' Using the blueprint tools, write steps to create a to do list api, 
-with users, todos, tasks, timestamp events, and with relations between these.'''
+task = '''Learn about blueprint: '''
 
+query = ''' Using the blueprint tools, write steps to create a shoe shop e-commmerce api, 
+with users, products, shopping events, and with relations between these.'''
 
 query_embed = text_embed(query)
 
@@ -58,7 +59,7 @@ dfs = df.sort_values(by='query_similarity',ascending=False)
 #print(dfs.head(4))
 
 n=5; ## how many similar prompts to use (from the knowledge database)
-actual_prompt=''
+actual_prompt=task
 for i in range(n):
     actual_prompt += 'input: '+ dfs['prompt'][i]+ ' output: ' + dfs['completion'][i]+' '+ '\n'
 actual_prompt += 'input: ' + query + ' output: '
@@ -67,10 +68,10 @@ actual_prompt += 'input: ' + query + ' output: '
 if (len(actual_prompt) > 10000):
     print('warning: you are reaching the max allowed number of tokens since len(actual_prompt)= ', len(actual_prompt))
 
-#print('The first 200 characters of the actual prompt are: \n')
-#print(actual_prompt[:200])
-#print('The last 100 characters of the actual prompt are: \n')
-#print(actual_prompt[-100:])
+print('The first 200 characters of the actual prompt are: \n')
+print(actual_prompt[:200])
+print('The last 100 characters of the actual prompt are: \n')
+print(actual_prompt[-100:])
 
 response = openai.Completion.create(engine=engine, prompt= actual_prompt, max_tokens= max_tokens,
            temperature=temperature, top_p=top_p, presence_penalty=presence_penalty, n=1, stop="\n\ninput:")
