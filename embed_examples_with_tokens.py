@@ -43,5 +43,5 @@ df['prompt_and_completion_tokens']=df.apply(lambda x: num_tokens_from_string(x['
 
 #print(df.head(5))
 
-df.to_pickle('blueprint-primer-general-and-specific-embeddings-with-tokens.pkl')
+df.to_pickle('blueprint-primer-ada-embeddings-with-tokens.pkl')
 

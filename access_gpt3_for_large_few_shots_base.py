@@ -20,7 +20,8 @@ engine='text-davinci-003'
 temperature=0.
 top_p=1.
 presence_penalty=0.
-max_tokens=1000
+frequency_penalty=0.
+max_tokens=750
 
 def text_embed(text:str) -> str:
     response = openai.Embedding.create(input=text,engine=embedding_engine)
@@ -30,7 +31,7 @@ def text_embed(text:str) -> str:
 def cosine_similarity(A,B):
     return np.dot(A,B)/(np.linalg.norm(A)*np.linalg.norm(B))
 
-df = pd.read_pickle('blueprint-primer-general-and-specific-embeddings-with-tokens.pkl')
+df = pd.read_pickle('blueprint-primer-ada-embeddings-with-tokens.pkl')
 
 #print(df.head(3))
 #print(type(df['prompt_embedding'][0]))
@@ -68,14 +69,28 @@ actual_prompt += 'input: ' + query + ' output: '
 if (len(actual_prompt) > 10000):
     print('warning: you are reaching the max allowed number of tokens since len(actual_prompt)= ', len(actual_prompt))
 
-print('The first 200 characters of the actual prompt are: \n')
-print(actual_prompt[:200])
-print('The last 100 characters of the actual prompt are: \n')
-print(actual_prompt[-100:])
+#print('The first 200 characters of the actual prompt are: \n')
+#print(actual_prompt[:200])
+##print('The last 100 characters of the actual prompt are: \n')
+#print(actual_prompt[-100:])
+print('the actual prompt is: \n ')
+print(actual_prompt)
 
-response = openai.Completion.create(engine=engine, prompt= actual_prompt, max_tokens= max_tokens,
-           temperature=temperature, top_p=top_p, presence_penalty=presence_penalty, n=1, stop="\n\ninput:")
+response = openai.Completion.create(model=engine, prompt= actual_prompt, max_tokens= max_tokens,
+           temperature=temperature, top_p=top_p, presence_penalty=presence_penalty, 
+           frequency_penalty=frequency_penalty, stop=["input:"])
 
+
+#response = openai.Completion.create(
+#  model="text-davinci-003",
+#  prompt=actual_prompt,
+#  temperature=0,
+##  max_tokens=max_tokens,
+#  top_p=1,
+#  frequency_penalty=0,
+##  presence_penalty=0,
+ # stop=["input:"]
+#)
 
 print('The GPT 3 engine responds with: ', response['choices'][0]['text']) 
 
