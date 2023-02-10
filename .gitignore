@@ -4,6 +4,7 @@
 **/git_ignore/
 
 **/git-ignore/
-/git-ignore/
-/git-ignore/**/*
+git-ignore/
+git-ignore/**/*
 .env
+older/
