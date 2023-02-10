@@ -8,7 +8,6 @@ import tiktoken
 import pandas as pd
 import numpy as np
 
-openai.api_key = "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"
 #embedding_engine = "text-similarity-davinci-001"
 embedding_engine = "text-embedding-ada-002" 
 # possible engines (encoding_names) to consider for num_tokens_from_string

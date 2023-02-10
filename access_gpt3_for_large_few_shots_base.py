@@ -13,7 +13,6 @@ import pickle
 import openai
 import pandas as pd
 import numpy as np
-openai.api_key = "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"
 
 #embedding_engine = "text-similarity-davinci-001"
 embedding_engine = "text-embedding-ada-002" 
@@ -22,7 +21,7 @@ temperature=0.
 top_p=1.
 presence_penalty=0.
 frequency_penalty=0.
-max_tokens=1500
+max_tokens=300
 
 def text_embed(text:str) -> str:
     response = openai.Embedding.create(input=text,engine=embedding_engine)
@@ -44,13 +43,13 @@ df = pd.read_pickle('blueprint-primer-large-ada-embeddings-with-tokens.pkl')
 #print(type(df['prompt_embedding'][0]))
 task = '''Learn about blueprint: '''
 
-#query = "What is blueprint?"
+query = "What is blueprint?"
 #query = '''Using the blueprint tools, write steps to create a shoe e-shopping api, 
 #with collections of users, products, shopping events and users balance, 
 #and with relations between these.'''
 
-query = ''' Using the blueprint tools, write .ts code to create collections of users and products 
-for an e-shopping api, and with relations between these.'''
+#query = ''' Using the blueprint tools, write .ts code to create collections of users and products 
+#for an e-shopping api, and with relations between these.'''
 
 query_embed = text_embed(query)
 
