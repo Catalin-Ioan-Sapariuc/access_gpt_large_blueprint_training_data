@@ -1,0 +1,138 @@
+Answer to query = '''Using the blueprint tools, write steps to create a shoe e-shopping api, 
+with collections of users, products, shopping events and users balance, and with relations between these.'''
+(max_tokens = 700) :
+The GPT 3 engine responds with:  
+
+
+1. Install the x framework: npm i -g bluelibs/x
+2. Create a project: x then choose x:project
+3. cd project npm install
+4. Create the collections:
+
+collection({
+  id: "Users",
+  fields: [
+    field({
+      id: "name",
+      type: fields.types.STRING,
+    }),
+    field({
+      id: "balance",
+      type: fields.types.NUMBER,
+    }),
+  ],
+});
+
+collection({
+  id: "Products",
+  fields: [
+    field({
+      id: "name",
+      type: fields.types.STRING,
+    }),
+    field({
+      id: "price",
+      type: fields.types.NUMBER,
+    }),
+  ],
+});
+
+collection({
+  id: "ShoppingEvents",
+  fields: [
+    field({
+      id: "date",
+      type: fields.types.DATE,
+    }),
+    field({
+      id: "totalPrice",
+      type: fields.types.NUMBER,
+    }),
+  ],
+});
+
+5. Create the relations:
+
+relation({
+  id: "user_shopping_events",
+  from: "Users",
+  to: "ShoppingEvents",
+  type: "many-to-many",
+});
+
+relation({
+  id: "shopping_events_products",
+  from: "ShoppingEvents",
+  to: "Products",
+  type: "many-to-many",
+});
+
+6. Generate the project: npm run blueprint:generate
+
+
+Same question, max_tokens=1200
+The GPT 3 engine responds with:  
+1. Install the x framework: npm i -g bluelibs/x
+2. Create a project: x then choose x:project
+3. cd project npm install
+4. Create the collections:
+
+collection({
+  id: "Users",
+  fields: [
+    field({
+      id: "name",
+      type: fields.types.STRING,
+    }),
+    field({
+      id: "balance",
+      type: fields.types.NUMBER,
+    }),
+  ],
+});
+
+collection({
+  id: "Products",
+  fields: [
+    field({
+      id: "name",
+      type: fields.types.STRING,
+    }),
+    field({
+      id: "price",
+      type: fields.types.NUMBER,
+    }),
+  ],
+});
+
+collection({
+  id: "ShoppingEvents",
+  fields: [
+    field({
+      id: "date",
+      type: fields.types.DATE,
+    }),
+    field({
+      id: "totalPrice",
+      type: fields.types.NUMBER,
+    }),
+  ],
+});
+
+5. Create the relations:
+
+relation({
+  id: "user_shopping_events",
+  from: "Users",
+  to: "ShoppingEvents",
+  type: "many-to-many",
+});
+
+relation({
+  id: "shopping_events_products",
+  from: "ShoppingEvents",
+  to: "Products",
+  type: "many-to-many",
+});
+
+6. Generate the project: npm run blueprint:generate

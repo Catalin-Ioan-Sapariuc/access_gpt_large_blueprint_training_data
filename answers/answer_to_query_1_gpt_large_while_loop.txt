@@ -1,0 +1,26 @@
+query = "What is blueprint?"
+
+ python .\access_gpt3_for_large_few_shots_base.py
+the df(5) head after sorting by query similarity 
+
+                       prompt                                         completion  ... prompt_and_completion_tokens  query_similarity
+0          What is blueprint?  blueprint is a paradigm that lets you write sc...  ...                           72          1.000000
+4            blueprint note:   You can use the x command to generate collecti...  ...                           31          0.888278
+2   Initial blueprint steps:   1. npm i -g i -g bluelibs/x (installs the x fr...  ...                           29          0.873301
+16       blueprint relations:  If you understand how Nova works, it should be...  ...                          371          0.873190
+6     blueprint collections:   // This is what triggers the generation of the...  ...                          171          0.868185
+
+[5 rows x 5 columns]
+the number of tokens in the task + query is:  8
+we added  19  (prompts, completions), where prompts are the most similar to the actual prompt
+the number of tokens in the actual prompt is:  3512
+warning: you are reaching the max allowed number of tokens since len(actual_prompt)=  13760
+The first 200 characters of the actual prompt are:
+
+Learn about blueprint: input: What is blueprint? output: blueprint is a paradigm that lets you write schema code and it can generate code while at the same time giving you the ability to add features,
+The last 100 characters of the actual prompt are:
+
+to run such generations while taking care of all the details. \n
+input: What is blueprint? output:
+The GPT 3 engine responds with:   Blueprint is a paradigm that lets you write schema code and it can generate code while at the same time giving you the ability to add features, 
+modify code and also support additional functionalities. Because Blueprint outputs an X-Framework compatible project, it's important that you are up to date with the X-Framework basics.
