@@ -16,10 +16,15 @@ and for calculating the (prompt, completion) tokens
 (by pre-pending the query with top 5 most similar prompts (and their completions)), feeding the created prompt
 to the GPT3 engine and outputing the engine's completion.    
 
-NOTE: This code can be improved / extended in one - two directions:  
 
-1. Improve the training (.csv) database for the particular knowledge desired / tasks. 
-2. Possibly find other ways (less expensive) for creating embeddings (openai charges for each created embedding, the charge is 0.2$ for 1K embedded token, as the most expensive charge, ada is much cheaper but I found small (accuracy, possibly floating point approximation) errors with ada's embeddings.
+Pre-requisites: openai, tiktoken, pickle, pandas, numpy (latest versions) and OPENAI_API_KEY as env variable. 
+
+To run the main code (get GPT3 answer to query if .pkl file exists) just do:
+python3 access_gpt3_for_large_few_shots_base.py
+
+NOTE: This code can be improved / extended in the main direction:  
+
+Improve the training (.csv) database for the particular knowledge desired / tasks. 
 
 
 
