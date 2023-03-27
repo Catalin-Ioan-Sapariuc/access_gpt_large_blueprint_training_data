@@ -1,0 +1,7 @@
+query = "What is blueprint?"
+
+
+Answer: 
+
+ "content": "Blueprint is a code generation tool that allows developers to quickly scaffold a fully-functional, production-ready application using templates, collections, and entities. This tool helps developers to generate field collections, relational models, and GraphQL schemas for their application, making development faster and more efficient. Blueprint can be easily integrated into an X-Framework application, making it even easier to create robust, scalable applications.",
+  "role": "assistant"

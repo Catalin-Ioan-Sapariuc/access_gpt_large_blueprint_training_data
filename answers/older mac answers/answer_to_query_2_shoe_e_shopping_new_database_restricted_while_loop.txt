@@ -1,0 +1,195 @@
+query = '''Using the blueprint tools, write steps to create a shoe e-shopping api, 
+with collections of users, products, shopping events and users balance, 
+and with relations between these.''' ## new dataset (changed some prompts), took max_tokens = 1000 , engine = 'text-davinci-003'
+
+
+$ python access_gpt3_for_large_few_shots_base.py
+the df(10) head after sorting by query similarity 
+
+                                               prompt  ... query_similarity
+2                           Initial blueprint steps:   ...         0.846933
+15                 How to create blueprint relations:  ...         0.844702
+3                         Create a blueprint project:  ...         0.833243
+6          more details about blueprint collections:   ...         0.822367
+16        more information about blueprint relations:  ...         0.819013
+5             how to create collections in blueprint:  ...         0.816049
+1   Pre-requisites for building a project in bluep...  ...         0.814098
+4                                    blueprint note:   ...         0.808949
+0                                  What is blueprint?  ...         0.806740
+9                           blueprint Collection UI​:  ...         0.805431
+
+[10 rows x 5 columns]
+the number of tokens in the task + query is:  44
+we added  18  (prompts, completions), where prompts are the most similar to the actual prompt
+the number of tokens in the actual prompt is:  2900
+warning: you are reaching the max allowed number of tokens since len(actual_prompt)=  12458
+The first 200 characters of the actual prompt are: 
+
+Learn about blueprint: input: Initial blueprint steps:  output: 1. npm i -g i -g bluelibs/x (installs the x framework)   
+input: How to create blueprint relations: output: Relations are described the 
+The last 100 characters of the actual prompt are: 
+
+s of users, products, shopping events and users balance, 
+and with relations between these. output: 
+The GPT 3 engine responds with:  
+1. Install the x framework using npm i -g bluelibs/x
+2. Create a project using x then choose x:project
+3. cd project npm install
+4. npm run blueprint:generate
+5. Create the collections for users, products, shopping events and users balance in the app.ts file:
+
+app({
+  collections: [
+    collection({
+      id: "Users",
+      fields: [],
+      relations: [],
+    }),
+    collection({
+      id: "Products",
+      fields: [],
+      relations: [],
+    }),
+    collection({
+      id: "ShoppingEvents",
+      fields: [],
+      relations: [],
+    }),
+    collection({
+      id: "UsersBalance",
+      fields: [],
+      relations: [],
+    }),
+  ],
+});
+
+6. Add the fields for each collection in the app.ts file:
+
+app({
+  collections: [
+    collection({
+      id: "Users",
+      fields: [
+        field({
+          id: "name",
+          type: field.types.STRING,
+        }),
+        field({
+          id: "email",
+          type: field.types.STRING,
+        }),
+        field({
+          id: "password",
+          type: field.types.STRING,
+        }),
+      ],
+      relations: [],
+    }),
+    collection({
+      id: "Products",
+      fields: [
+        field({
+          id: "name",
+          type: field.types.STRING,
+        }),
+        field({
+          id: "price",
+          type: field.types.NUMBER,
+        }),
+        field({
+          id: "description",
+          type: field.types.STRING,
+        }),
+      ],
+      relations: [],
+    }),
+    collection({
+      id: "ShoppingEvents",
+      fields: [
+        field({
+          id: "date",
+          type: field.types.DATE,
+        }),
+        field({
+          id: "totalPrice",
+          type: field.types.NUMBER,
+        }),
+      ],
+      relations: [],
+    }),
+    collection({
+      id: "UsersBalance",
+      fields: [
+        field({
+          id: "balance",
+          type: field.types.NUMBER,
+        }),
+      ],
+      relations: [],
+    }),
+  ],
+});
+
+7. Add the relations between the collections in the app.ts file:
+
+app({
+  collections: [
+    collection({
+      id: "Users",
+      fields: [],
+      relations: [
+        relation({
+          id: "shoppingEvents",
+          to: "ShoppingEvents",
+          isMany: true,
+        }),
+        relation({
+          id: "balance",
+          to: "UsersBalance",
+          isMany: false,
+        }),
+      ],
+    }),
+    collection({
+      id: "Products",
+      fields: [],
+      relations: [
+        relation({
+          id: "shoppingEvents",
+          to: "ShoppingEvents",
+          isMany: true,
+        }),
+      ],
+    }),
+    collection({
+      id: "ShoppingEvents",
+      fields: [],
+      relations: [
+        relation({
+          id: "user",
+          to: "Users",
+          isMany: false,
+        }),
+        relation({
+          id: "products",
+          to: "Products",
+          isMany: true,
+        }),
+      ],
+    }),
+    collection({
+      id: "UsersBalance",
+      fields: [],
+      relations: [
+        relation({
+          id: "user",
+          to: "Users",
+          isMany: false,
+        }),
+      ],
+    }),
+  ],
+});
+
+8. Generate the project using npm run blueprint:generate.
+(openai) 

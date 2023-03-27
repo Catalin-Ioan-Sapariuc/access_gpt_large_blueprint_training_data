@@ -1,0 +1,34 @@
+query = "What is blueprint?"
+
+
+Answer: 
+
+~/Desktop/CHAT_BOT/access_gpt_for_large_training_data on  master! ⌚ 14:36:00
+$ python access_gpt3_for_large_few_shots_base.py
+the df(10) head after sorting by query similarity 
+
+                                         prompt  ... query_similarity
+0                            What is blueprint?  ...         0.999998
+4                               blueprint note:  ...         0.886982
+6     more details about blueprint collections:  ...         0.876266
+16  more information about blueprint relations:  ...         0.875764
+2                      Initial blueprint steps:  ...         0.864827
+3                   Create a blueprint project:  ...         0.860828
+24                             blueprint Menus:  ...         0.860024
+20                        blueprint Shortcuts​:  ...         0.858798
+17                        blueprint Rendering​:  ...         0.858405
+10        blueprint Collection Representation​:  ...         0.856582
+
+[10 rows x 5 columns]
+the number of tokens in the task + query is:  8
+we added  18  (prompts, completions), where prompts are the most similar to the actual prompt
+the number of tokens in the actual prompt is:  3309
+warning: you are reaching the max allowed number of tokens since len(actual_prompt)=  12863
+The first 200 characters of the actual prompt are: 
+
+Learn about blueprint: input: What is blueprint? output: blueprint is a paradigm that lets you write schema code and it can generate code while at the same time giving you the ability to add features,
+The last 100 characters of the actual prompt are: 
+
+to run such generations while taking care of all the details. \n 
+input: What is blueprint? output: 
+The GPT 3 engine responds with:   Blueprint is a paradigm that lets you write schema code and it can generate code while at the same time giving you the ability to add features, modify code and also support additional functionalities. Because Blueprint outputs an X-Framework compatible project, it's important that you are up to date with the X-Framework basics.

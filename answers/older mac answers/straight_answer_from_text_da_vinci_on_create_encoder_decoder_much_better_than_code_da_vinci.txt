@@ -1,0 +1,74 @@
+### The following is a Query in playground to text-davinci-003:
+
+Q1 : Write python code for an encoder decoder model using numpy or keras. Explain steps with good comments.
+
+GPT3 (text-davinci-003) answer: 
+#importing necessary libraries
+import numpy as np
+from keras.layers import Input, LSTM, RepeatVector
+from keras.models import Model
+
+#Defining the input shape
+input_shape = (None, 1)
+
+#Defining the encoder model
+#Input layer
+encoder_inputs = Input(shape=input_shape)
+
+#LSTM layer
+encoder_lstm = LSTM(units=64, return_state=True)
+
+#Passing the input to the LSTM layer
+encoder_outputs, state_h, state_c = encoder_lstm(encoder_inputs)
+
+#Storing the states
+encoder_states = [state_h, state_c]
+
+#Defining the decoder model
+#Input layer
+decoder_inputs = Input(shape=input_shape)
+
+#LSTM layer
+decoder_lstm = LSTM(units=64, return_sequences=True, return_state=True)
+
+#Passing the input to the LSTM layer
+decoder_outputs, _, _ = decoder_lstm(decoder_inputs, initial_state=encoder_states)
+
+#RepeatVector layer
+decoder_dense = RepeatVector(n=1)
+
+#Passing the output of the LSTM layer to the RepeatVector layer
+decoder_outputs = decoder_dense(decoder_outputs)
+
+#Defining the model
+model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
+
+#Compiling the model
+model.compile(optimizer='adam', loss='mse')
+
+#Fitting the model
+model.fit([encoder_inputs, decoder_inputs], decoder_outputs, epochs=100, batch_size=64) 
+
+Q1 (same):  Write python code for an encoder decoder model using numpy or keras. Explain steps with good comments. 
+ 
+Codex (code-davinci-002) answer: 
+The model should be able to encode and decode a sequence of integers.
+
+The model should be able to encode and decode a sequence of integers.
+
+The model should be able to encode and decode a sequence of integers.
+
+The model should be able to encode and decode a sequence of integers.
+
+The model should be able to encode and decode a sequence of integers.
+
+The model should be able to encode and decode a sequence of integers.
+
+The model should be able to encode and decode a sequence of integers.
+
+The model should be able to encode and decode a sequence of integers.
+
+The model should be able to encode and decode a sequence of integers.
+
+The model should be able to encode and .. etc. 
+

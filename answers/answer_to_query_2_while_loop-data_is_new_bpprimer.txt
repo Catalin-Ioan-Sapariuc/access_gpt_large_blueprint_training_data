@@ -1,0 +1,94 @@
+query = ''' Using the blueprint tools, write .ts code to create collections of users and products 
+for an e-shopping api, and with relations between these.''
+
+Answer: 
+
+~/Desktop/CHAT_BOT/access_gpt_for_large_training_data on  master! ⌚ 14:45:48
+$ python access_gpt3_for_large_few_shots_base.py
+the df(10) head after sorting by query similarity 
+
+                                         prompt  ... query_similarity
+15           How to create blueprint relations:  ...         0.812867
+3                   Create a blueprint project:  ...         0.806211
+5       how to create collections in blueprint:  ...         0.801258
+6     more details about blueprint collections:  ...         0.790356
+2                      Initial blueprint steps:  ...         0.781241
+16  more information about blueprint relations:  ...         0.779184
+8   Note about blueprint collection behaviors​:  ...         0.775887
+9                     blueprint Collection UI​:  ...         0.775454
+14       blueprint Collection Fields Reducers​:  ...         0.773868
+11                blueprint collections fields:  ...         0.771676
+
+[10 rows x 5 columns]
+the number of tokens in the task + query is:  37
+we added  17  (prompts, completions), where prompts are the most similar to the actual prompt
+the number of tokens in the actual prompt is:  2878
+warning: you are reaching the max allowed number of tokens since len(actual_prompt)=  11868
+The first 200 characters of the actual prompt are: 
+
+Learn about blueprint: input: How to create blueprint relations: output: Relations are described the same way Nova relations are, they are stored at collection level under relations: [], like this:
+ap
+The last 100 characters of the actual prompt are: 
+
+collections of users and products 
+for an e-shopping api, and with relations between these. output: 
+
+The GPT 3 engine responds with:  
+
+import { Studio } from "@bluelibs/x";
+import * as faker from "faker";
+const { generateProject, app, collection, field, relation, sharedModel } =
+  Studio;
+const application = app({
+  id: "my-app",
+  collections: [
+    // Here you will store your collections
+    collection({
+      id: "Users",
+      description: "Collection of users", // optional
+      fields: [
+        // Here we specify the fields for collection
+        field({
+          id: "name",
+          type: fields.types.STRING,
+        }),
+        field({
+          id: "email",
+          type: fields.types.STRING,
+        }),
+        field({
+          id: "password",
+          type: fields.types.STRING,
+        }),
+      ],
+    }),
+    collection({
+      id: "Products",
+      description: "Collection of products", // optional
+      fields: [
+        // Here we specify the fields for collection
+        field({
+          id: "name",
+          type: fields.types.STRING,
+        }),
+        field({
+          id: "price",
+          type: fields.types.NUMBER,
+        }),
+        field({
+          id: "description",
+          type: fields.types.STRING,
+        }),
+      ],
+      relations: [
+        relation({
+          id: "user",
+          to: "Users",
+        }),
+      ],
+    }),
+  ],
+});
+
+// This is what triggers the generation of the project
+generateProject(application);

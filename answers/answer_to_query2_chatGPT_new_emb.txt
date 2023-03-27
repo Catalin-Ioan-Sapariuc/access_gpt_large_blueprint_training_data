@@ -1,0 +1,43 @@
+
+query = ''' Using the blueprint tools, write .ts code to create collections of users and products for an e-shopping api, and with relations between these.'''
+
+
+$ python access_chatgpt_for_large_few_shots_base.py
+
+the df(10) head after sorting by query similarity 
+
+                                         prompt  ... query_similarity
+15           How to create blueprint relations:  ...         0.812867
+3                   Create a blueprint project:  ...         0.806211
+5       how to create collections in blueprint:  ...         0.801258
+6     more details about blueprint collections:  ...         0.790356
+2                      Initial blueprint steps:  ...         0.781241
+16  more information about blueprint relations:  ...         0.779184
+8   Note about blueprint collection behaviors​:  ...         0.775887
+9                     blueprint Collection UI​:  ...         0.775454
+14       blueprint Collection Fields Reducers​:  ...         0.773868
+11                blueprint collections fields:  ...         0.771676
+
+[10 rows x 5 columns]
+the number of tokens in the query is:  32
+we added  17  (prompts, completions), where prompts are the most similar to the actual prompt
+the number of tokens in the actual prompt is:  2873
+The GPT 3 engine responds with:  {
+  "content": "Here's the example code to create the collections of users and products with relations between them:\n\n```\n
+import { Studio } from \"@bluelibs/x\";\nconst { generateProject, app, collection, field, relation } = Studio;\n
+const application = app({\n  id: \"eshop\",\n  collections: [\n    collection({\n      id: \"users\",\n      
+description: \"Collection of users for e-shop\",\n      fields: [\n        field({\n          id: \"name\",\n          
+type: field.types.STRING,\n          isRequired: true,\n          description: \"Name of the user\",\n        }),\n        
+field({\n          id: \"email\",\n          type: field.types.STRING,\n          isRequired: true,\n          
+description: \"Email of the user\",\n        }),\n      ],\n    }),\n    
+collection({\n      id: \"products\",\n      description: \"Collection of products for e-shop\",\n      fields: [\n        field({\n          id: \"name\",\n          type: field.types.STRING,\n          isRequired: true,\n          description: \"Name of the product\",\n }),
+\n        field({\n          id: \"description\",\n          type: field.types.STRING,\n          isRequired: false,\n          
+description: \"Description of the product\",\n        }),\n        
+field({\n          id: \"price\",\n          type: field.types.NUMBER,\n          isRequired: true,\n          
+description: \"Price of the product\",\n        }),\n      ],\n      
+relations: [\n        relation({\n          id: \"user\",\n          to: \"users\",\n        }),\n      ],\n    }),\n  ],\n});\n\ngenerateProject(application);\n\n```\n
+
+In the above example, we create two collections, users and products. Users have two fields, name and email, both of them are required. 
+Products also have three fields, name, description, price, with name and price required but description is not. 
+The products collection also have a relation to users, which means there is a link between the two collections.",
+ "role": "assistant"
